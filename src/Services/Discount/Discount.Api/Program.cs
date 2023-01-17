@@ -1,4 +1,4 @@
-using Basket.API.Repositories;
+using Discount.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,11 +8,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddStackExchangeRedisCache(option =>
-{
-    option.Configuration = builder.Configuration["CacheSettings:ConnectionString"];
-});
-builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
